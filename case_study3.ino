@@ -57,6 +57,13 @@ void loop() {
         lcd.clear();
         lcd.print("LED: ");
         lcd.print(state == HIGH ? "ON" : "OFF");
+
+      // Check if the LCD prints "LED ON" and then turn on the LED
+      if (strcmp((char *)toggleButton.lastread, "ON") == 0) {
+        digitalWrite(LED_PIN, HIGH);
+      } else {
+        digitalWrite(LED_PIN, LOW); // Ensure LED is off if "LED ON" is not printed
+      }
       }
     }
 
